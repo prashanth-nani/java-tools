@@ -3,28 +3,39 @@ package com.quintlr.net;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.SocketAddress;
+import java.net.Authenticator;
+import java.net.PasswordAuthentication;
 
-
-
-/**
+/*
  *
  * @author prashanth
  */
 public class QProxy {
+
     private String proxy = null;
     private Integer port = null;
     private String username = null;
     private String password = null;
+    private Authenticator auth = null;
 
     public QProxy(String proxy, Integer port) {
         this(proxy, port, null, null);
     }
-    
+
     public QProxy(String proxy, Integer port, String username, String password) {
         this.proxy = proxy;
         this.port = port;
         this.username = username;
         this.password = password;
+
+        if (username != null && password != null) {
+            auth = new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password.toCharArray());
+                }
+            };
+        }
     }
 
     public String getProxy() {
@@ -58,11 +69,15 @@ public class QProxy {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public Proxy getProxyObject() {
         SocketAddress sa = new InetSocketAddress(proxy, port);
         Proxy qproxy = new Proxy(Proxy.Type.HTTP, sa);
         return qproxy;
     }
     
+    public Authenticator getAuthenticator() {
+        return auth;
+    }
+
 }
