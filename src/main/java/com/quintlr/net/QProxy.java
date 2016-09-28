@@ -16,13 +16,11 @@ public class QProxy {
     private String username = null;
     private String password = null;
 
-    public QProxy(String proxy, Integer port)
-    {
+    public QProxy(String proxy, Integer port) {
         this(proxy, port, null, null);
     }
     
-    public QProxy(String proxy, Integer port, String username, String password)
-    {
+    public QProxy(String proxy, Integer port, String username, String password) {
         this.proxy = proxy;
         this.port = port;
         this.username = username;

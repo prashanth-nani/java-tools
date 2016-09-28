@@ -12,10 +12,15 @@ import com.quintlr.net.QProxy;
  *
  * @author prashanth
  */
-public class FileDownload {
+public class FileDownload implements Runnable{
 
     private String url = null;
     private URL downloadUrl = null;
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public String getUrl() {
         return this.url;
