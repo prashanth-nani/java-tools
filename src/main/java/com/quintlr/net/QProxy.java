@@ -17,9 +17,12 @@ public class QProxy {
     private String username = null;
     private String password = null;
     private Authenticator auth = null;
+    
+    public boolean requireAuth = true;
 
     public QProxy(String proxy, Integer port) {
         this(proxy, port, null, null);
+        this.requireAuth = false;
     }
 
     public QProxy(String proxy, Integer port, String username, String password) {
