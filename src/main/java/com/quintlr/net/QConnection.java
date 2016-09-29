@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.quintlr.net;
 
 import java.io.IOException;
-import java.net.Authenticator;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,23 +10,25 @@ import java.net.URLConnection;
  *
  * @author prashanth
  */
-public class Connection {
+public class QConnection {
 
     private String urlString = null;
     private URL connectionUrl= null;
+    private URLConnection urlConn = null;
     private HttpURLConnection httpConn = null;
-    private final Authenticator auth = null;
     
-    public Connection(String url) throws IOException{
+    public QConnection(String url) throws IOException{
         this(url, null);
     }
     
-    public Connection(String url, QProxy qproxy) throws MalformedURLException, IOException {
+    public QConnection(String url, QProxy qproxy) throws MalformedURLException, IOException {
         this.urlString = url;
         connectionUrl = new URL(url);
-        httpConn = (HttpURLConnection) connectionUrl.openConnection(qproxy.getProxyObject());
-        Authenticator.setDefault(auth);
-        
+        if(qproxy != null)
+            urlConn = connectionUrl.openConnection(qproxy.getProxyObject());
+        else
+            urlConn = connectionUrl.openConnection();
+        httpConn = (HttpURLConnection) urlConn;
     }
 
     public String getUrlString() {
@@ -41,6 +37,10 @@ public class Connection {
 
     public URL getDownloadUrl() {
         return connectionUrl;
+    }
+    
+    public URLConnection getUrlConn() {
+        return urlConn;
     }
 
     public HttpURLConnection getHttpConn() {
