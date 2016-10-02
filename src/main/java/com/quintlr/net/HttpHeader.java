@@ -1,10 +1,6 @@
-/*
- *This class checks where the server accepts 'range: bytes=0-10' format or not.
- */
-package com.quintlr.tools;
 
-import com.quintlr.net.QConnection;
-import com.quintlr.net.QProxy;
+package com.quintlr.net;
+
 import java.io.IOException;
 import java.net.Authenticator;
 import java.net.HttpURLConnection;
