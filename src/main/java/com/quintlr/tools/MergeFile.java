@@ -28,7 +28,7 @@ public class MergeFile {
                 BufferedInputStream secondFileInputStream = new BufferedInputStream(in);
                 FileOutputStream firstFileOutputStream = new FileOutputStream(firstFile, true)){
                 
-                byte data[] = new byte[1024*1024];
+                byte data[] = new byte[1024];
                 int bytesRead = -1;
                 
                 while((bytesRead = secondFileInputStream.read(data)) != -1){
