@@ -10,5 +10,8 @@ package com.quintlr.tools;
  * @author prashanth
  */
 public class Main {
-    
+    public static void main(String[] args) throws InterruptedException {
+        FileDownload f = new FileDownload();
+        f.download("http://localhost/test/1.mp3", null);
+    }
 }
