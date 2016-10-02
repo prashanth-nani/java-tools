@@ -1,5 +1,4 @@
 ~~1. Create a class to check for 'Range' field support in response header from server.~~
-
 2. If server doesn't support range file retrieval, create a method which uses single thread to download.
 
 ~~3. Complete merge file method.~~
@@ -14,4 +13,4 @@
 
 ~~8. Change comment in HttpHeader.java~~
 
-9. Check accepted answer here <a href="http://stackoverflow.com/questions/3428102/how-to-resume-an-interrupted-download-part-2]">SO Answer</a> and implement those in the code.
+9. Check the accepted <a href="http://stackoverflow.com/questions/3428102/how-to-resume-an-interrupted-download-part-2]">SO Answer here</a> and implement those things in the code.
